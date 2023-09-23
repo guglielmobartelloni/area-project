@@ -9,9 +9,13 @@ import bartelloni.guglielmo.configuration.MQConfig;
 import bartelloni.guglielmo.model.Contact;
 import lombok.extern.java.Log;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @Log
+@EnableJpaRepositories(basePackages = "bartelloni.guglielmo.repository.jpa")
+@EnableElasticsearchRepositories(basePackages = "bartelloni.guglielmo.repository.elastic")
 public class ContactsManagerProcessorApplication {
 
 	public static void main(String[] args) {

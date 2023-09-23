@@ -1,5 +1,7 @@
 package bartelloni.guglielmo.model;
 
+import org.springframework.data.elasticsearch.annotations.Document;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,6 +23,7 @@ import lombok.ToString;
 @ToString
 @Builder
 @AllArgsConstructor
+@Document(indexName = "contacts")
 public class Contact {
 
     @Id

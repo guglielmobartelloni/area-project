@@ -2,19 +2,19 @@ package bartelloni.guglielmo.service;
 
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import bartelloni.guglielmo.model.Contact;
-import bartelloni.guglielmo.repository.ContactRepository;
-import lombok.RequiredArgsConstructor;
+import bartelloni.guglielmo.repository.jpa.ContactRepository;
 
 /**
  * ContactService
  */
 @Service
-@RequiredArgsConstructor
 public class ContactService {
 
+    @Autowired
     private ContactRepository repository;
 
     public Contact upsert(Contact contact){

@@ -1,4 +1,4 @@
-package bartelloni.guglielmo.repository;
+package bartelloni.guglielmo.repository.jpa;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -9,4 +9,5 @@ import bartelloni.guglielmo.model.Contact;
  */
 public interface ContactRepository extends JpaRepository<Contact, Long>{
 
+    
 }

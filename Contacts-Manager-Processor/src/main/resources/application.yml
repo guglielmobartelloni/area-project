@@ -7,8 +7,12 @@ spring:
   jpa:
     database: POSTGRESQL
     show-sql: true
+    properies:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: create-drop
   datasource:
     platform: postgres
     url: jdbc:postgresql://localhost:5432/area

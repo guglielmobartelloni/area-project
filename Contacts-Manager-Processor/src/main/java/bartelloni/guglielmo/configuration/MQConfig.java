@@ -1,5 +1,5 @@
 
-package bartelloni.guglielmo;
+package bartelloni.guglielmo.configuration;
 
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.amqp.core.Binding;

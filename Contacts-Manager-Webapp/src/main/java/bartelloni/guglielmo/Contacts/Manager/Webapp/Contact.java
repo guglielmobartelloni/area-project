@@ -1,7 +1,5 @@
-package bartelloni.guglielmo.model;
 
-import org.springframework.data.elasticsearch.annotations.Document;
-
+package bartelloni.guglielmo.Contacts.Manager.Webapp;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

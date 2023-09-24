@@ -1,0 +1,28 @@
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    properies:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    hibernate:
+      ddl-auto: create-drop
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/area
+    username: postgres
+    password:
+    driverClassName: org.postgresql.Driver
+  data:
+    elasticsearch:
+      url: https://localhost:9200
+  thymeleaf:
+    cache: false
+    prefix: file:src/main/resources/templates/
+

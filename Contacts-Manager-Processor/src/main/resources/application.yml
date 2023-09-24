@@ -21,5 +21,4 @@ spring:
     driverClassName: org.postgresql.Driver
   data:
     elasticsearch:
-      cluster-names: docker-cluster
-      cluster-node: localhost:9200
+      url: https://localhost:9200

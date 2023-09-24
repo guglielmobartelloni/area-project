@@ -2,6 +2,7 @@ package bartelloni.guglielmo.model;
 
 import org.springframework.data.elasticsearch.annotations.Document;
 
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,7 +16,10 @@ import lombok.NoArgsConstructor;
 @Document(indexName = "contacts")
 public class ContactDocument {
 
-    private Long id;
+    @Id
+    private String id;
+
+    private Long contactId;
     private String name;
     private String surname;
     private String phone;

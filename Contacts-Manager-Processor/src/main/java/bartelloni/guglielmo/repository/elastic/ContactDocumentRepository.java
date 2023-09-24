@@ -8,6 +8,4 @@ import bartelloni.guglielmo.model.ContactDocument;
  * ContactDocumentRepository
  */
 public interface ContactDocumentRepository extends ElasticsearchRepository<ContactDocument, Long>{
-
-    
 }

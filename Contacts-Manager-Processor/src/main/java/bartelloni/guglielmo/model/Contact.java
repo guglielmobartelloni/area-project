@@ -23,7 +23,6 @@ import lombok.ToString;
 @ToString
 @Builder
 @AllArgsConstructor
-@Document(indexName = "contacts")
 public class Contact {
 
     @Id

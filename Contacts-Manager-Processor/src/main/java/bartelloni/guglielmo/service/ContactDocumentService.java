@@ -3,7 +3,6 @@ package bartelloni.guglielmo.service;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import bartelloni.guglielmo.model.ContactDocument;
@@ -23,8 +22,8 @@ public class ContactDocumentService {
     }
 
 
-    public List<ContactDocument> getAll(){
-        return repository.findAll(Sort.by(Sort.Direction.ASC, "id"));
+    public Iterable<ContactDocument> getAll(){
+        return repository.findAll();
     }
 
     public Optional<ContactDocument> getById(Long id){

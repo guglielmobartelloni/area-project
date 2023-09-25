@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import bartelloni.guglielmo.Contacts.Manager.Webapp.configuration.MQConfig;
+
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import io.github.wimdeblauwe.hsbt.mvc.HxRefresh;
 import io.github.wimdeblauwe.hsbt.mvc.HxRequest;
 import lombok.extern.java.Log;
@@ -27,6 +30,9 @@ public class ContactController {
 
     @Autowired
     private ContactService service;
+
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
 
     @GetMapping("/new")
     public String newContact(Model model){
@@ -45,6 +51,7 @@ public class ContactController {
     @PostMapping("/contact")
     public String processContact(Model model, @ModelAttribute Contact contact){
         log.info("Contact: " + contact);
+        rabbitTemplate.convertAndSend(MQConfig.EXCHANGE, MQConfig.ROUTING_KEY, contact);
         service.upsert(contact);
         model.addAttribute("contacts", service.getAll());
         return "index";

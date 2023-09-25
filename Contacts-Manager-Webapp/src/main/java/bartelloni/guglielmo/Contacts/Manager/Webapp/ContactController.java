@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import co.elastic.clients.elasticsearch.core.search.ResponseBody;
 import io.github.wimdeblauwe.hsbt.mvc.HxRefresh;
 import io.github.wimdeblauwe.hsbt.mvc.HxRequest;
 import lombok.extern.java.Log;

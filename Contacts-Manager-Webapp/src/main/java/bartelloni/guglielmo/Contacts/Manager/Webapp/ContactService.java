@@ -2,6 +2,7 @@ package bartelloni.guglielmo.Contacts.Manager.Webapp;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,7 +17,7 @@ public class ContactService {
 
 
     public Iterable<Contact> getAll(){
-        return repository.findAll();
+        return repository.findAll(Sort.by(Sort.Direction.ASC, "id"));
     }
 
     public Optional<Contact> getById(Long id){

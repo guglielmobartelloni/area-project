@@ -8,6 +8,7 @@
     <body>
         <div layout:fragment="content">
             <form action="/contact" method="post">
+                <input type="hidden" name="id" th:value="${contact.getId()}" />
                 <div class="container">
                     <div class="row mb-3">
                         <div class="col">

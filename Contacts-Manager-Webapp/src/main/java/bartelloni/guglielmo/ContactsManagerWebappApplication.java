@@ -5,6 +5,8 @@ import java.util.stream.Collectors;
 
 import bartelloni.guglielmo.model.Contact;
 import bartelloni.guglielmo.service.ContactService;
+import bartelloni.guglielmo.service.RabbitPublisher;
+
 import org.jeasy.random.EasyRandom;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -19,7 +21,7 @@ public class ContactsManagerWebappApplication {
     }
 
     @Bean
-    CommandLineRunner commandLineRunner(ContactService contactService) {
+    CommandLineRunner commandLineRunner(ContactService contactService, RabbitPublisher publisher) {
         return args -> {
 
             EasyRandom generator = new EasyRandom();
@@ -28,6 +30,7 @@ public class ContactsManagerWebappApplication {
 
             for (Contact contact : contacts) {
                 contactService.upsert(contact);
+                publisher.newContact(contact);
             }
             // Contact contact =
             // Contact.builder().name("Nome").surname("Cognome").phone("3248989883").lat("-16.95832")

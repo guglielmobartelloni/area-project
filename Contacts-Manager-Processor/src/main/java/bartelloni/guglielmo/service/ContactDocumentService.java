@@ -5,7 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import bartelloni.guglielmo.model.ContactDocument;
+import bartelloni.guglielmo.model.Contact;
 import bartelloni.guglielmo.repository.elastic.ContactDocumentRepository;
 
 /**
@@ -17,20 +17,20 @@ public class ContactDocumentService {
     @Autowired
     private ContactDocumentRepository repository;
 
-    public ContactDocument upsert(ContactDocument contact){
+    public Contact upsert(Contact contact){
         return repository.save(contact);
     }
 
 
-    public Iterable<ContactDocument> getAll(){
+    public Iterable<Contact> getAll(){
         return repository.findAll();
     }
 
-    public Optional<ContactDocument> getById(Long id){
+    public Optional<Contact> getById(Long id){
         return repository.findById(id);
     }
 
-    public void delete(ContactDocument contact){
+    public void delete(Contact contact){
         repository.delete(contact);
     }
     

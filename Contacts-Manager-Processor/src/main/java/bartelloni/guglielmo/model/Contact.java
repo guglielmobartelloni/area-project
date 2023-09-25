@@ -1,31 +1,37 @@
-package bartelloni.guglielmo.model;
 
+package bartelloni.guglielmo.model;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 
-import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 
 /**
  * Contact
  */
 @Data
-@NoArgsConstructor
+@RequiredArgsConstructor
+@ToString
+@Builder
 @AllArgsConstructor
 @Document(indexName = "contacts")
-public class ContactDocument {
+public class Contact {
 
     @Id
-    private String id;
+    private Long id;
 
-    private Long contactId;
+    private String idContact;
+
     private String name;
     private String surname;
     private String phone;
     private String address;
     private String lat;
     private String lon;
+
     private String otherInfo;
 
 }

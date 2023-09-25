@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import bartelloni.guglielmo.configuration.MQConfig;
-import bartelloni.guglielmo.model.ContactDocument;
+import bartelloni.guglielmo.model.RabbitContact;
 import bartelloni.guglielmo.service.ContactDocumentService;
 import lombok.extern.java.Log;
 
@@ -20,10 +20,13 @@ public class ContactsListener {
     private ContactDocumentService contactService;
 
     @RabbitListener(queues = MQConfig.QUEUE)
-    public void process(ContactDocument contact){
-        var contactResult = contactService.upsert(contact);
-        log.info("Upserted contact contact: " + contactResult);
+    public void process(RabbitContact contact) {
+        switch (contact.getOperation()) {
+            case NEW -> contactService.upsert(contact);
+            case EDIT -> contactService.upsert(contact);
+            case DELETE -> contactService.delete(contact);
+        }
+        log.info("Processed contact: " + contact);
     }
 
-    
 }

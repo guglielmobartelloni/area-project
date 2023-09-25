@@ -13,13 +13,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import bartelloni.guglielmo.Contacts.Manager.Webapp.configuration.MQConfig;
-
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import io.github.wimdeblauwe.hsbt.mvc.HxRefresh;
 import io.github.wimdeblauwe.hsbt.mvc.HxRequest;
 import lombok.extern.java.Log;
-
 
 /**
  * MainController
@@ -32,16 +28,16 @@ public class ContactController {
     private ContactService service;
 
     @Autowired
-    private RabbitTemplate rabbitTemplate;
+    private RabbitPublisher rabbitPublisher;
 
     @GetMapping("/new")
-    public String newContact(Model model){
+    public String newContact(Model model) {
         model.addAttribute("contact", new Contact());
         return "contact-form";
     }
 
     @GetMapping("/edit/{id}")
-    public String editContact(@PathVariable Long id, Model model){
+    public String editContact(@PathVariable Long id, Model model) {
         Optional<Contact> optionalContact = service.getById(id);
         var contact = optionalContact.orElseThrow();
         model.addAttribute("contact", contact);
@@ -49,10 +45,14 @@ public class ContactController {
     }
 
     @PostMapping("/contact")
-    public String processContact(Model model, @ModelAttribute Contact contact){
+    public String processContact(Model model, @ModelAttribute Contact contact) {
         log.info("Contact: " + contact);
-        rabbitTemplate.convertAndSend(MQConfig.EXCHANGE, MQConfig.ROUTING_KEY, contact);
         service.upsert(contact);
+        if (contact.getId() == 0) {
+            rabbitPublisher.newContact(contact);
+        } else {
+            rabbitPublisher.editContact(contact);
+        }
         model.addAttribute("contacts", service.getAll());
         return "index";
     }
@@ -60,9 +60,10 @@ public class ContactController {
     @DeleteMapping("/delete/{id}")
     @HxRequest
     @HxRefresh
-    public ResponseEntity<String> deleteContact(@PathVariable Long id){
+    public ResponseEntity<String> deleteContact(@PathVariable Long id) {
         var contact = service.getById(id).orElseThrow();
         service.delete(contact);
+        rabbitPublisher.deleteContact(contact);
         return new ResponseEntity<String>("", HttpStatus.OK);
     }
 

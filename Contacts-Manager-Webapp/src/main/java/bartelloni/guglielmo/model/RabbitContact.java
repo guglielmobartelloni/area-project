@@ -1,6 +1,5 @@
-package bartelloni.guglielmo.Contacts.Manager.Webapp.model;
+package bartelloni.guglielmo.model;
 
-import bartelloni.guglielmo.Contacts.Manager.Webapp.Contact;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,8 +19,3 @@ public class RabbitContact extends Contact {
     }
 }
 
-public enum Operation {
-    NEW,
-    EDIT,
-    DELETE
-}

@@ -1,7 +1,11 @@
-package bartelloni.guglielmo.Contacts.Manager.Webapp;
+package bartelloni.guglielmo.controller;
 
+import java.util.Objects;
 import java.util.Optional;
 
+import bartelloni.guglielmo.model.Contact;
+import bartelloni.guglielmo.service.ContactService;
+import bartelloni.guglielmo.service.RabbitPublisher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -46,9 +50,9 @@ public class ContactController {
 
     @PostMapping("/contact")
     public String processContact(Model model, @ModelAttribute Contact contact) {
-        log.info("Contact: " + contact);
+        boolean isNew = contact.getId() == null;
         service.upsert(contact);
-        if (contact.getId() == 0) {
+        if (isNew) {
             rabbitPublisher.newContact(contact);
         } else {
             rabbitPublisher.editContact(contact);

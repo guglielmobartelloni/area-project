@@ -1,6 +1,6 @@
 
 
-package bartelloni.guglielmo.Contacts.Manager.Webapp.configuration;
+package bartelloni.guglielmo.configuration;
 
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.amqp.core.Binding;

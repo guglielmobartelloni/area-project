@@ -1,9 +1,9 @@
-package bartelloni.guglielmo.Contacts.Manager.Webapp.repository.elastic;
+package bartelloni.guglielmo.repository.elastic;
 
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 import org.springframework.stereotype.Repository;
 
-import bartelloni.guglielmo.Contacts.Manager.Webapp.model.ContactDocument;
+import bartelloni.guglielmo.model.ContactDocument;
 
 
 /**

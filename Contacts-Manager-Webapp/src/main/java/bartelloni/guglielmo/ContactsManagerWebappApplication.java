@@ -1,8 +1,10 @@
-package bartelloni.guglielmo.Contacts.Manager.Webapp;
+package bartelloni.guglielmo;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+import bartelloni.guglielmo.model.Contact;
+import bartelloni.guglielmo.service.ContactService;
 import org.jeasy.random.EasyRandom;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

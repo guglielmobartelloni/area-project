@@ -1,12 +1,13 @@
-package bartelloni.guglielmo.Contacts.Manager.Webapp;
+package bartelloni.guglielmo.service;
 
+import bartelloni.guglielmo.model.Contact;
+import bartelloni.guglielmo.configuration.MQConfig;
+import bartelloni.guglielmo.model.Operation;
+import bartelloni.guglielmo.model.RabbitContact;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import bartelloni.guglielmo.Contacts.Manager.Webapp.configuration.MQConfig;
-import bartelloni.guglielmo.Contacts.Manager.Webapp.model.Operation;
-import bartelloni.guglielmo.Contacts.Manager.Webapp.model.RabbitContact;
 import lombok.extern.java.Log;
 
 /**

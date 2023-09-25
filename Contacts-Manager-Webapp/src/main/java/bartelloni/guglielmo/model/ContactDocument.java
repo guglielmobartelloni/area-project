@@ -1,4 +1,4 @@
-package bartelloni.guglielmo.Contacts.Manager.Webapp.model;
+package bartelloni.guglielmo.model;
 
 import org.springframework.data.elasticsearch.annotations.Document;
 

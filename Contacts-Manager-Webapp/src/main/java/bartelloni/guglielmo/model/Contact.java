@@ -1,5 +1,5 @@
 
-package bartelloni.guglielmo.Contacts.Manager.Webapp;
+package bartelloni.guglielmo.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

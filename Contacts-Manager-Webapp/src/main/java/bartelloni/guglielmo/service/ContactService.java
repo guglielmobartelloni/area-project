@@ -1,6 +1,8 @@
-package bartelloni.guglielmo.Contacts.Manager.Webapp;
+package bartelloni.guglielmo.service;
 import java.util.Optional;
 
+import bartelloni.guglielmo.model.Contact;
+import bartelloni.guglielmo.repository.jpa.ContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;

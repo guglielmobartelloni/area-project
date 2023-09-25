@@ -1,5 +1,6 @@
-package bartelloni.guglielmo.Contacts.Manager.Webapp;
+package bartelloni.guglielmo.repository.jpa;
 
+import bartelloni.guglielmo.model.Contact;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

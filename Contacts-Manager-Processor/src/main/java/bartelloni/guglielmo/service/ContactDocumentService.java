@@ -2,6 +2,7 @@ package bartelloni.guglielmo.service;
 
 import java.util.Optional;
 
+import bartelloni.guglielmo.model.ContactDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,21 +18,46 @@ public class ContactDocumentService {
     @Autowired
     private ContactDocumentRepository repository;
 
-    public Contact upsert(Contact contact){
-        return repository.save(contact);
+    public ContactDocument newContact(Contact contact){
+        var contactDocument = convertContact(contact);
+        return repository.save(contactDocument);
     }
 
+    public ContactDocument editContact(Contact contact){
+        var contactDocument = repository.getByIdContact(contact.getId()).orElseThrow();
+        contactDocument.setAddress(contact.getAddress());
+        contactDocument.setLat(contact.getLat());
+        contactDocument.setLon(contact.getLon());
+        contactDocument.setName(contact.getName());
+        contactDocument.setOtherInfo(contact.getOtherInfo());
+        contactDocument.setPhone(contact.getPhone());
+        contactDocument.setSurname(contact.getSurname());
+        return repository.save(contactDocument);
+    }
 
-    public Iterable<Contact> getAll(){
+    public Iterable<ContactDocument> getAll(){
         return repository.findAll();
     }
 
-    public Optional<Contact> getById(Long id){
+    public Optional<ContactDocument> getById(Long id){
         return repository.findById(id);
     }
 
     public void delete(Contact contact){
-        repository.delete(contact);
+        repository.deleteByIdContact(contact.getId());
+    }
+
+    private ContactDocument convertContact(Contact contact){
+        return ContactDocument.builder()
+                .idContact(contact.getId())
+                .address(contact.getAddress())
+                .lat(contact.getLat())
+                .lon(contact.getLon())
+                .name(contact.getName())
+                .otherInfo(contact.getOtherInfo())
+                .phone(contact.getPhone())
+                .surname(contact.getSurname()).build();
     }
     
 }
+

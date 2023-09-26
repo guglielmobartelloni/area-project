@@ -22,8 +22,8 @@ public class ContactsListener {
     @RabbitListener(queues = MQConfig.QUEUE)
     public void process(RabbitContact contact) {
         switch (contact.getOperation()) {
-            case NEW -> contactService.upsert(contact);
-            case EDIT -> contactService.upsert(contact);
+            case NEW-> contactService.newContact(contact);
+            case EDIT -> contactService.editContact(contact);
             case DELETE -> contactService.delete(contact);
         }
         log.info("Processed contact: " + contact);

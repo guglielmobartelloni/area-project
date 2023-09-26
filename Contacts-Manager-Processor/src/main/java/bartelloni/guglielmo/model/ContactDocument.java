@@ -1,9 +1,13 @@
 
 package bartelloni.guglielmo.model;
-
-import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 
 /**
  * Contact
@@ -13,9 +17,14 @@ import org.springframework.data.elasticsearch.annotations.Document;
 @ToString
 @Builder
 @AllArgsConstructor
-public class Contact {
+@Document(indexName = "contacts")
+public class ContactDocument {
 
-    private Long id;
+    @Id
+    private String id;
+
+
+    private Long idContact;
 
     private String name;
     private String surname;

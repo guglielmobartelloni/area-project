@@ -14,4 +14,13 @@ services:
       - discovery.type=single-node
       - xpack.security.enabled=false
 
+  db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: area
+    ports:
+      - 5432:5432
+
 

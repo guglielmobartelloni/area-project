@@ -7,3 +7,5 @@ spring:
   data:
     elasticsearch:
       url: https://localhost:9200
+server:
+  port: 8081

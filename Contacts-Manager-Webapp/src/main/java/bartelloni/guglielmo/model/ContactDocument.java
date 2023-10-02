@@ -19,7 +19,7 @@ public class ContactDocument {
     @Id
     private String id;
 
-    private Long contactId;
+    private Long idContact;
     private String name;
     private String surname;
     private String phone;

@@ -8,11 +8,13 @@ import org.springframework.stereotype.Service;
 
 import bartelloni.guglielmo.model.Contact;
 import bartelloni.guglielmo.repository.elastic.ContactDocumentRepository;
+import lombok.extern.java.Log;
 
 /**
  * ContactService
  */
 @Service
+@Log
 public class ContactDocumentService {
 
     @Autowired
@@ -20,6 +22,7 @@ public class ContactDocumentService {
 
     public ContactDocument newContact(Contact contact){
         var contactDocument = convertContact(contact);
+        log.info("Contact document: " + contactDocument);
         return repository.save(contactDocument);
     }
 

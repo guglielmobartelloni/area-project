@@ -6,7 +6,7 @@ spring:
     password: guest
   jpa:
     database: POSTGRESQL
-    show-sql: true
+    show-sql: false
     properies:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
@@ -17,7 +17,7 @@ spring:
     platform: postgres
     url: jdbc:postgresql://localhost:5432/area
     username: postgres
-    password:
+    password: postgres
     driverClassName: org.postgresql.Driver
   data:
     elasticsearch:

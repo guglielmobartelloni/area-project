@@ -1,5 +1,6 @@
 package bartelloni.guglielmo;
 
+import bartelloni.guglielmo.repository.elastic.ContactDocumentRepository;
 import bartelloni.guglielmo.service.ContactDocumentService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -17,9 +18,12 @@ public class ContactsManagerProcessorApplication {
     }
 
      @Bean
-     CommandLineRunner commandLineRunnerTest(ContactDocumentService service) {
+     CommandLineRunner commandLineRunnerTest(ContactDocumentService service, ContactDocumentRepository repo) {
          return args -> {
-             service.getAll().forEach(e -> log.info("Contact: " + e));
+            for (var contact : service.getAll()){
+                repo.delete(contact);
+                log.info("Deleted contact: " +contact);
+            }
          };
 
      }

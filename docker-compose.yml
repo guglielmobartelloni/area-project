@@ -13,7 +13,6 @@ services:
     environment:
       - discovery.type=single-node
       - xpack.security.enabled=false
-
   db:
     image: postgres
     environment:

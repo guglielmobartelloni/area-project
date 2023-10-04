@@ -22,12 +22,10 @@ public class ContactsListener {
     @RabbitListener(queues = MQConfig.QUEUE)
     public void process(RabbitContact contact) {
         switch (contact.getOperation()) {
-            case NEW-> log.info("Returned contact: " + contactService.newContact(contact));
+            case NEW->  contactService.newContact(contact);
             case EDIT -> contactService.editContact(contact);
             case DELETE -> contactService.delete(contact);
         }
-        log.info("Processed contact: " + contact);
-        contactService.getAll().forEach(e -> log.info("Contact of all: " + e));
     }
 
 }

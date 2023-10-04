@@ -24,4 +24,7 @@ Ogni volta che viene fatta un'operazione su un contatto, l'applicazione manda su
 Il processore prendera' questi messaggi e si occupera' di gestirli per aggiornare Elasticsearch.
 
 La ricerca di un contatto avviene tramite il campo presente in alto a destra dell'interfaccia web, ancora senza indicatore di caricamento che, per ragioni temporali, non e' stato implementato.
+C'e' stata un po' di difficolta' nell'implementazione della query richiesta in quanto era la prima volta che utilizzavo Elasticsearch.
+
+E' stato creato un sample di test per il ContactService.java nell'applicazione web. 
 

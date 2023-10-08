@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+Contacts-Manager-Webapp/.DS_Store
+.DS_Store
+Contacts-Manager-Processor/.DS_Store
